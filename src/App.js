@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
-import ChangeNameButton from './ChangeNameButton/ChangeNameButton';
+import Button from './Button/Button';
 import './App.css';
 
 class App extends Component {
@@ -31,8 +31,9 @@ class App extends Component {
           change={this.changeNameHandler}
           curentName={this.state.username}  
         />
-        <ChangeNameButton
+        <Button
           click={this.changeNameButtonHandler}
+          buttonText={"Change name"}
         />
         <button onClick={this.buttonTest}>ButtonTest</button>
       </div>
