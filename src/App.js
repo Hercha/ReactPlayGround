@@ -7,7 +7,8 @@ import './App.css';
 class App extends Component {
   state = {
     username: 'Nena',
-    username2: 'Jenka'
+    username2: 'Jenka',
+    hideshowme: false
   };
 
   changeNameHandler = (event) => {
@@ -20,6 +21,11 @@ class App extends Component {
 
   buttonTest = () => {
     console.log("Clicked");
+  };
+
+  hideShowMe = () => {
+    const hideShow = this.state.hideshowme;
+    this.setState({ hideshowme: !hideShow })
   };
 
   render() {
@@ -36,6 +42,16 @@ class App extends Component {
           buttonText={"Change name"}
         />
         <button onClick={this.buttonTest}>ButtonTest</button>
+        { 
+          this.state.hideshowme ?
+            <div className="hideShow">
+              <p>Hide or show me</p>
+            </div> : null
+        }
+        <Button
+          click={this.hideShowMe}
+          buttonText={"Hide or show me"}
+        />
       </div>
     );
   };
