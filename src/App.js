@@ -72,6 +72,19 @@ class App extends Component {
     this.setState({ showPersons2: !doesShow });
   };
 
+  deletePersonHandler = (personIndex) => {
+    /* make copy of original data and work with that instead 
+    You should always update state in an immutable fashion. 
+    Create a copy, change that and then update the state*/
+    // alternative 1: 
+    //const persons2 = this.state.persons2.slice();
+    /* alternative 2 using es6 spread, 
+    we now have a new array with objects from the old: */
+    const persons2 = [...this.state.persons2];
+    persons2.splice(personIndex, 1);
+    this.setState({persons2: persons2})
+  };
+
   render() {
 
     const style = {
@@ -122,8 +135,9 @@ class App extends Component {
     if(this.state.showPersons2) {
       persons2 = (
         <div>
-          {this.state.persons2.map(person2 => {
-            return <Person2 
+          {this.state.persons2.map((person2, index) => {
+            return <Person2
+              click={() => this.deletePersonHandler(index)} 
               name={person2.name} 
               age={person2.age}
             />
