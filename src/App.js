@@ -29,6 +29,17 @@ class App extends Component {
   };
 
   render() {
+
+    let showHide = null;
+
+    if(this.state.hideshowme) {
+      showHide = (
+        <div className="hideShow">
+          <p>Hide or show me</p>
+        </div>
+      );
+    };
+
     return (
       <div className="App">
         <UserOutput username={this.state.username}/>
@@ -42,12 +53,7 @@ class App extends Component {
           buttonText={"Change name"}
         />
         <button onClick={this.buttonTest}>ButtonTest</button>
-        { 
-          this.state.hideshowme ?
-            <div className="hideShow">
-              <p>Hide or show me</p>
-            </div> : null
-        }
+        {showHide}
         <Button
           click={this.hideShowMe}
           buttonText={"Hide or show me"}
