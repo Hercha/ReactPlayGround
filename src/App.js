@@ -3,6 +3,7 @@ import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 import Button from './Button/Button';
 import Person from './Person/Person';
+import Person2 from './Person2/Person2';
 import './App.css';
 
 class App extends Component {
@@ -15,7 +16,13 @@ class App extends Component {
       { name: 'Per', age: 43 },
       { name: 'Lisa', age: 18 }
     ],
-    showPersons: false
+    showPersons: false,
+    persons2: [
+      { name: 'Knut', age: 30 },
+      { name: 'Per', age: 43 },
+      { name: 'Lisa', age: 18 }
+    ],
+    showPersons2: false
   };
 
   changeNameHandler = (event) => {
@@ -58,6 +65,11 @@ class App extends Component {
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
+  };
+
+  togglePersonsHandler2 = () => {
+    const doesShow = this.state.showPersons2;
+    this.setState({ showPersons2: !doesShow });
   };
 
   render() {
@@ -105,6 +117,21 @@ class App extends Component {
       );
     };
 
+    let persons2 = null;
+
+    if(this.state.showPersons2) {
+      persons2 = (
+        <div>
+          {this.state.persons2.map(person2 => {
+            return <Person2 
+              name={person2.name} 
+              age={person2.age}
+            />
+          })}
+        </div>
+      );
+    };
+
     return (
       <div className="App">
         <UserOutput username={this.state.username}/>
@@ -128,7 +155,13 @@ class App extends Component {
           buttonText={"Toggle Persons"}
           click={this.togglePersonsHandler}
         />
+        <Button 
+          style={style}
+          buttonText={"Toggle Persons2"}
+          click={this.togglePersonsHandler2}
+        />
         {persons}
+        {persons2}
       </div>
     );
   };
