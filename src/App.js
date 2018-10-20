@@ -62,6 +62,27 @@ class App extends Component {
     })
   };
 
+  nameChangedHandler2 = (event, id) => {
+    const personIndex = this.state.persons2.findIndex(p => {
+      return p.id === id;
+    });
+
+    /* make a copy of original data */
+    const person2 = {
+      ...this.state.persons2[personIndex]
+    };
+
+    /* Older alternativ making copy old data */
+    //const person2 = Object.assign({}, this.state.persons2[personIndex]); 
+
+    person2.name = event.target.value;
+
+    const persons2 = [...this.state.persons2];
+    persons2[personIndex] = person2;
+
+    this.setState( {persons2: persons2} );
+  };
+
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
@@ -141,6 +162,7 @@ class App extends Component {
               name={person2.name} 
               age={person2.age}
               key={person2.id}
+              changed={(event) => this.nameChangedHandler2(event, person2.id)}
             />
           })}
         </div>
