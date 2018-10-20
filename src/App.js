@@ -18,9 +18,9 @@ class App extends Component {
     ],
     showPersons: false,
     persons2: [
-      { name: 'Knut', age: 30 },
-      { name: 'Per', age: 43 },
-      { name: 'Lisa', age: 18 }
+      { id: 'asfa1', name: 'Knut', age: 30 },
+      { id: 'vasdf1', name: 'Per', age: 43 },
+      { id: 'asdf11', name: 'Lisa', age: 18 }
     ],
     showPersons2: false
   };
@@ -140,6 +140,7 @@ class App extends Component {
               click={() => this.deletePersonHandler(index)} 
               name={person2.name} 
               age={person2.age}
+              key={person2.id}
             />
           })}
         </div>
